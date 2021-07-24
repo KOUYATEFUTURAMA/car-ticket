@@ -1,7 +1,7 @@
 @extends('layouts.site')
 @section('content')
 
-    <section class="probootstrap-cover overflow-hidden relative"  style="background-image:url('../public/assets/front/assets/images/bg_2.png');" data-stellar-background-ratio="0.5"  id="section-home">
+    <section class="probootstrap-cover overflow-hidden relative"  style="background-image:url('../assets/front/assets/images/bg_2.png');" data-stellar-background-ratio="0.5"  id="section-home">
     <div class="overlay"></div>
     <div class="container">
         <div class="row align-items-center">
@@ -10,7 +10,8 @@
                 <p class="lead mb-5 probootstrap-animate">
             </div> 
             <div class="col-md probootstrap-animate">
-                <form action="#" class="probootstrap-form">
+                    <form method="post" action="{{route('serche-depart')}}" class="probootstrap-form">
+                        @csrf
                     <div class="form-group">
                         <div class="row mb-3">
                             <div class="col-md">
@@ -30,7 +31,7 @@
                                     <label for="id_label_single2">Destination</label>
                                     <div class="probootstrap_select-wrap">
                                         <label for="id_label_single2" style="width: 100%;">
-                                            <select class="js-example-basic-single js-states form-control" name="destication" id="id_label_single2" style="width: 100%;">
+                                            <select class="js-example-basic-single js-states form-control" name="destination" id="id_label_single2" style="width: 100%;">
                                                 @foreach($localites as $localite)
                                                 <option value="{{$localite->id}}">{{$localite->libelle_localite}}</option>
                                                 @endforeach
@@ -47,7 +48,7 @@
                                     <label for="probootstrap-date-departure">Date </label>
                                     <div class="probootstrap-date-wrap">
                                         <span class="icon ion-calendar"></span> 
-                                        <input type="text" id="probootstrap-date-departure" class="form-control" placeholder="<?=date('d-m-Y');?>">
+                                        <input type="text" id="probootstrap-date-departure" name="date" class="form-control" value="<?=date('d-m-Y');?>">
                                     </div>
                                 </div>
                             </div>
@@ -55,7 +56,7 @@
                         <!-- END row -->
                         <div class="row">
                             <div class="col-md">
-                                <input type="submit" value="Rechercher" class="btn btn-primary btn-block">
+                                <input type="submit" value="Rechercher" style="cursor:pointer;" class="btn btn-primary btn-block">
                             </div>
                         </div>
                     </div>
@@ -116,7 +117,7 @@
     </section>
 
     <section class="probootstrap-section-half d-md-flex" id="section-about">
-      <div class="probootstrap-image probootstrap-animate" data-animate-effect="fadeIn" style="background-image: url('../public/assets/front/assets/images/img_2.jpg')"></div>
+      <div class="probootstrap-image probootstrap-animate" data-animate-effect="fadeIn" style="background-image: url('../assets/front/assets/images/img_2.jpg')"></div>
       <div class="probootstrap-text">
         <div class="probootstrap-inner probootstrap-animate" data-animate-effect="fadeInRight">
           <h2 class="heading mb-4">Service Clients</h2>
@@ -128,7 +129,7 @@
     </section>
 
     <section class="probootstrap-section-half d-md-flex">
-      <div class="probootstrap-image order-2 probootstrap-animate" data-animate-effect="fadeIn" style="background-image: url('../public/assets/front/assets/images/img_3.jpg')"></div>
+      <div class="probootstrap-image order-2 probootstrap-animate" data-animate-effect="fadeIn" style="background-image: url('../assets/front/assets/images/img_3.jpg')"></div>
       <div class="probootstrap-text order-1">
         <div class="probootstrap-inner probootstrap-animate" data-animate-effect="fadeInLeft">
           <h2 class="heading mb-4">Options de paiement</h2>
@@ -227,7 +228,7 @@
         <div class="row">
           <div class="col-md-6">
             <div class="media probootstrap-media d-flex align-items-stretch mb-4 probootstrap-animate">
-              <div class="probootstrap-media-image" style="background-image: url('../public/assets/front/assets/images/img_1.jpg')">
+              <div class="probootstrap-media-image" style="background-image: url('../assets/front/assets/images/img_1.jpg')">
               </div>
               <div class="media-body">
                 <h5 class="mb-3">01. Service Title Here</h5>
@@ -235,7 +236,7 @@
               </div>
             </div>
             <div class="media probootstrap-media d-flex align-items-stretch mb-4 probootstrap-animate">
-              <div class="probootstrap-media-image" style="background-image: url('../public/assets/front/assets/images/img_2.jpg')">
+              <div class="probootstrap-media-image" style="background-image: url('../assets/front/assets/images/img_2.jpg')">
               </div>
               <div class="media-body">
                 <h5 class="mb-3">02. Service Title Here</h5>
@@ -245,7 +246,7 @@
           </div>
           <div class="col-md-6">
             <div class="media probootstrap-media d-flex align-items-stretch mb-4 probootstrap-animate">
-              <div class="probootstrap-media-image" style="background-image: url('../public/assets/front/assets/images/img_4.jpg')">
+              <div class="probootstrap-media-image" style="background-image: url('../assets/front/assets/images/img_4.jpg')">
               </div>
               <div class="media-body">
                 <h5 class="mb-3">03. Service Title Here</h5>
@@ -253,7 +254,7 @@
               </div>
             </div>
             <div class="media probootstrap-media d-flex align-items-stretch mb-4 probootstrap-animate">
-              <div class="probootstrap-media-image" style="background-image: url('../public/assets/front/assets/images/img_5.jpg')">
+              <div class="probootstrap-media-image" style="background-image: url('../assets/front/assets/images/img_5.jpg')">
               </div>
               <div class="media-body">
                 <h5 class="mb-3">04. Service Title Here</h5>
@@ -297,7 +298,7 @@
         <div class="row">
           <div class="col-md-6">
             <div class="media probootstrap-media d-flex align-items-stretch mb-4 probootstrap-animate">
-              <div class="probootstrap-media-image" style="background-image: url('../public/assets/front/assets/images/img_1.jpg')">
+              <div class="probootstrap-media-image" style="background-image: url('../assets/front/assets/images/img_1.jpg')">
               </div>
               <div class="media-body">
                 <span class="text-uppercase">January 1st 2018</span>
@@ -307,7 +308,7 @@
               </div>
             </div>
             <div class="media probootstrap-media d-flex align-items-stretch mb-4 probootstrap-animate">
-              <div class="probootstrap-media-image" style="background-image: url('../public/assets/front/assets/images/img_2.jpg')">
+              <div class="probootstrap-media-image" style="background-image: url('../assets/front/assets/images/img_2.jpg')">
               </div>
               <div class="media-body">
                 <span class="text-uppercase">January 1st 2018</span>
@@ -319,7 +320,7 @@
           </div>
           <div class="col-md-6">
             <div class="media probootstrap-media d-flex align-items-stretch mb-4 probootstrap-animate">
-              <div class="probootstrap-media-image" style="background-image: url('../public/assets/front/assets/images/img_4.jpg')">
+              <div class="probootstrap-media-image" style="background-image: url('../assets/front/assets/images/img_4.jpg')">
               </div>
               <div class="media-body">
                 <span class="text-uppercase">January 1st 2018</span>
@@ -329,7 +330,7 @@
               </div>
             </div>
             <div class="media probootstrap-media d-flex align-items-stretch mb-4 probootstrap-animate">
-              <div class="probootstrap-media-image" style="background-image: url('../public/assets/front/assets/images/img_5.jpg')">
+              <div class="probootstrap-media-image" style="background-image: url('../assets/front/assets/images/img_5.jpg')">
               </div>
               <div class="media-body">
                 <span class="text-uppercase">January 1st 2018</span>
@@ -356,7 +357,7 @@
             <div class="owl-carousel js-owl-carousel-2">
               <div>
                 <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
-                  <img src="{{('../public/assets/front/assets/images/sq_img_2.jpg')}}" alt="Free Template by ProBootstrap" class="img-fluid">
+                  <img src="{{('../assets/front/assets/images/sq_img_2.jpg')}}" alt="Free Template by ProBootstrap" class="img-fluid">
                   <div class="media-body">
                     <h5 class="mb-3">02. Service Title Here</h5>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
@@ -366,7 +367,7 @@
               <!-- END slide item -->
               <div>
                 <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
-                  <img src="{{('../public/assets/front/assets/images/sq_img_1.jpg')}}" alt="Free Template by ProBootstrap" class="img-fluid">
+                  <img src="{{('../assets/front/assets/images/sq_img_1.jpg')}}" alt="Free Template by ProBootstrap" class="img-fluid">
                   <div class="media-body">
                     <h5 class="mb-3">02. Service Title Here</h5>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
@@ -376,7 +377,7 @@
               <!-- END slide item -->
               <div>
                 <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
-                  <img src="{{('../public/assets/front/assets/images/sq_img_3.jpg')}}" alt="Free Template by ProBootstrap" class="img-fluid">
+                  <img src="{{('../assets/front/assets/images/sq_img_3.jpg')}}" alt="Free Template by ProBootstrap" class="img-fluid">
                   <div class="media-body">
                     <h5 class="mb-3">02. Service Title Here</h5>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
@@ -386,7 +387,7 @@
               <!-- END slide item -->
               <div>
                 <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
-                  <img src="{{('../public/assets/front/assets/images/sq_img_4.jpg')}}" alt="Free Template by ProBootstrap" class="img-fluid">
+                  <img src="{{('../assets/front/assets/images/sq_img_4.jpg')}}" alt="Free Template by ProBootstrap" class="img-fluid">
                   <div class="media-body">
                     <h5 class="mb-3">02. Service Title Here</h5>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
@@ -396,7 +397,7 @@
               <!-- END slide item -->
               <div>
                 <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
-                  <img src="{{('../public/assets/front/assets/images/sq_img_5.jpg')}}" alt="Free Template by ProBootstrap" class="img-fluid">
+                  <img src="{{('../assets/front/assets/images/sq_img_5.jpg')}}" alt="Free Template by ProBootstrap" class="img-fluid">
                   <div class="media-body">
                     <h5 class="mb-3">02. Service Title Here</h5>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
@@ -406,7 +407,7 @@
               <!-- END slide item -->
               <div>
                 <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
-                  <img src="{{('../public/assets/front/assets/images/sq_img_2.jpg')}}" alt="Free Template by ProBootstrap" class="img-fluid">
+                  <img src="{{('../assets/front/assets/images/sq_img_2.jpg')}}" alt="Free Template by ProBootstrap" class="img-fluid">
                   <div class="media-body">
                     <h5 class="mb-3">02. Service Title Here</h5>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
@@ -416,7 +417,7 @@
               <!-- END slide item -->
               <div>
                 <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
-                  <img src="{{('../public/assets/front/assets/images/sq_img_1.jpg')}}" alt="Free Template by ProBootstrap" class="img-fluid">
+                  <img src="{{('../assets/front/assets/images/sq_img_1.jpg')}}" alt="Free Template by ProBootstrap" class="img-fluid">
                   <div class="media-body">
                     <h5 class="mb-3">02. Service Title Here</h5>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
@@ -426,7 +427,7 @@
               <!-- END slide item -->
               <div>
                 <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
-                  <img src="{{('../public/assets/front/assets/images/sq_img_3.jpg')}}" alt="Free Template by ProBootstrap" class="img-fluid">
+                  <img src="{{('../assets/front/assets/images/sq_img_3.jpg')}}" alt="Free Template by ProBootstrap" class="img-fluid">
                   <div class="media-body">
                     <h5 class="mb-3">02. Service Title Here</h5>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
@@ -436,7 +437,7 @@
               <!-- END slide item -->
               <div>
                 <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
-                  <img src="{{('../public/assets/front/assets/images/sq_img_4.jpg')}}" alt="Free Template by ProBootstrap" class="img-fluid">
+                  <img src="{{('../assets/front/assets/images/sq_img_4.jpg')}}" alt="Free Template by ProBootstrap" class="img-fluid">
                   <div class="media-body">
                     <h5 class="mb-3">02. Service Title Here</h5>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
@@ -446,7 +447,7 @@
               <!-- END slide item -->
               <div>
                 <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
-                  <img src="{{('../public/assets/front/assets/images/sq_img_5.jpg')}}" alt="Free Template by ProBootstrap" class="img-fluid">
+                  <img src="{{('../assets/front/assets/images/sq_img_5.jpg')}}" alt="Free Template by ProBootstrap" class="img-fluid">
                   <div class="media-body">
                     <h5 class="mb-3">02. Service Title Here</h5>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>

@@ -154,10 +154,11 @@
                                ? 'active' : ''}}">
                 <a href="{{route('auth.users.index')}}"><i class="fa fa-users"></i> <span>Utilisateurs</span></a>
             </li>
-            @endif
-            @if(Auth::user()->role == 'Concepteur' or Auth::user()->role == 'Administrateur')
             <li class="{{ Route::currentRouteName() === 'auth.users-compagnies' ? 'active' : ''}}">
                 <a href="{{route('auth.users-compagnies')}}"><i class="fa fa-users"></i> <span>Utilisateurs Compagnies</span></a>
+            </li>
+            <li>
+                <a href="/" target="_blank"><i class="fa fa-link"></i> <span>Web site</span></a>
             </li>
             @endif
             <li>

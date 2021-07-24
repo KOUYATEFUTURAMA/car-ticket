@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', 'SiteController@index');
+Route::post('serche-depart', 'SiteController@sercheDepart')->name('serche-depart');
 
 Route::get('/login-car-ticket/admin', function () {
    return view('auth.login');

@@ -44,13 +44,15 @@ class DepartController extends Controller
             $departs = Depart::with('localite_depart','localite_arrive','vehicule','chauffeur')
                         ->where([['departs.deleted_at', NULL],['departs.compagnie_id',Auth::user()->compagnie_id]]) 
                         ->select('departs.*',DB::raw('DATE_FORMAT(departs.date_arrivee, "%d-%m-%Y %H:%i") as date_arrivees'),DB::raw('DATE_FORMAT(departs.date_depart, "%d-%m-%Y %H:%i") as date_departs'))
-                        ->orderBy('departs.date_depart', 'ASC')
+                        ->orderBy('departs.statut', 'ASC')
+                        ->orderBy('departs.date_depart', 'DESC')
                         ->get();
         }else{
             $departs = Depart::with('compagnie','localite_depart','localite_arrive','vehicule','chauffeur')
                         ->where('departs.deleted_at', NULL) 
                         ->select('departs.*',DB::raw('DATE_FORMAT(departs.date_arrivee, "%d-%m-%Y %H:%i") as date_arrivees'),DB::raw('DATE_FORMAT(departs.date_depart, "%d-%m-%Y %H:%i") as date_departs'))
-                        ->orderBy('departs.date_depart', 'ASC')
+                        ->orderBy('departs.statut', 'ASC')
+                        ->orderBy('departs.date_depart', 'DESC')
                         ->get();
         }
        $jsonData["rows"] = $departs->toArray();
@@ -65,14 +67,16 @@ class DepartController extends Controller
                         ->where([['departs.deleted_at', NULL],['departs.compagnie_id',Auth::user()->compagnie_id]]) 
                         ->whereDate('departs.date_depart','=', $date)
                         ->select('departs.*',DB::raw('DATE_FORMAT(departs.date_arrivee, "%d-%m-%Y %H:%i") as date_arrivees'),DB::raw('DATE_FORMAT(departs.date_depart, "%d-%m-%Y %H:%i") as date_departs'))
-                        ->orderBy('departs.date_depart', 'ASC')
+                        ->orderBy('departs.statut', 'ASC')
+                        ->orderBy('departs.date_depart', 'DESC')
                         ->get();
         }else{
         $departs = Depart::with('compagnie','localite_depart','localite_arrive','vehicule','chauffeur')
                         ->where('departs.deleted_at', NULL)
                         ->whereDate('departs.date_depart','=', $date)
                         ->select('departs.*',DB::raw('DATE_FORMAT(departs.date_arrivee, "%d-%m-%Y %H:%i") as date_arrivees'),DB::raw('DATE_FORMAT(departs.date_depart, "%d-%m-%Y %H:%i") as date_departs'))
-                        ->orderBy('departs.date_depart', 'ASC')
+                        ->orderBy('departs.statut', 'ASC')
+                        ->orderBy('departs.date_depart', 'DESC')
                         ->get();
         }
        $jsonData["rows"] = $departs->toArray();
@@ -85,13 +89,15 @@ class DepartController extends Controller
             $departs = Depart::with('localite_depart','localite_arrive','vehicule','chauffeur')
                         ->where([['departs.deleted_at', NULL],['departs.compagnie_id',Auth::user()->compagnie_id],['departs.localite_depart',$depart],['departs.localite_arrive',$arrivee]]) 
                         ->select('departs.*',DB::raw('DATE_FORMAT(departs.date_arrivee, "%d-%m-%Y %H:%i") as date_arrivees'),DB::raw('DATE_FORMAT(departs.date_depart, "%d-%m-%Y %H:%i") as date_departs'))
-                        ->orderBy('departs.date_depart', 'ASC')
+                        ->orderBy('departs.statut', 'ASC')
+                        ->orderBy('departs.date_depart', 'DESC')
                         ->get();
         }else{
             $departs = Depart::with('compagnie','localite_depart','localite_arrive','vehicule','chauffeur')
                         ->where([['departs.deleted_at', NULL],['departs.localite_depart',$depart],['departs.localite_arrive',$arrivee]]) 
                         ->select('departs.*',DB::raw('DATE_FORMAT(departs.date_arrivee, "%d-%m-%Y %H:%i") as date_arrivees'),DB::raw('DATE_FORMAT(departs.date_depart, "%d-%m-%Y %H:%i") as date_departs'))
-                        ->orderBy('departs.date_depart', 'ASC')
+                        ->orderBy('departs.statut', 'ASC')
+                        ->orderBy('departs.date_depart', 'DESC')
                         ->get();
         }
        $jsonData["rows"] = $departs->toArray();
@@ -106,14 +112,16 @@ class DepartController extends Controller
                         ->where([['departs.deleted_at', NULL],['departs.compagnie_id',Auth::user()->compagnie_id],['departs.localite_depart',$depart],['departs.localite_arrive',$arrivee]]) 
                         ->whereDate('departs.date_depart','=', $date)
                         ->select('departs.*',DB::raw('DATE_FORMAT(departs.date_arrivee, "%d-%m-%Y %H:%i") as date_arrivees'),DB::raw('DATE_FORMAT(departs.date_depart, "%d-%m-%Y %H:%i") as date_departs'))
-                        ->orderBy('departs.date_depart', 'ASC')
+                        ->orderBy('departs.statut', 'ASC')
+                        ->orderBy('departs.date_depart', 'DESC')
                         ->get();
         }else{
             $departs = Depart::with('compagnie','localite_depart','localite_arrive','vehicule','chauffeur')
                         ->where([['departs.deleted_at', NULL],['departs.localite_depart',$depart],['departs.localite_arrive',$arrivee]]) 
                         ->whereDate('departs.date_depart','=', $date)
                         ->select('departs.*',DB::raw('DATE_FORMAT(departs.date_arrivee, "%d-%m-%Y %H:%i") as date_arrivees'),DB::raw('DATE_FORMAT(departs.date_depart, "%d-%m-%Y %H:%i") as date_departs'))
-                        ->orderBy('departs.date_depart', 'ASC')
+                       ->orderBy('departs.statut', 'ASC')
+                        ->orderBy('departs.date_depart', 'DESC')
                         ->get();
         }
        $jsonData["rows"] = $departs->toArray();
@@ -126,7 +134,8 @@ class DepartController extends Controller
         $departs = Depart::with('compagnie','localite_depart','localite_arrive','vehicule','chauffeur')
                         ->where([['departs.deleted_at', NULL],['departs.compagnie_id',$compagnie]]) 
                         ->select('departs.*',DB::raw('DATE_FORMAT(departs.date_arrivee, "%d-%m-%Y %H:%i") as date_arrivees'),DB::raw('DATE_FORMAT(departs.date_depart, "%d-%m-%Y %H:%i") as date_departs'))
-                        ->orderBy('departs.date_depart', 'ASC')
+                        ->orderBy('departs.statut', 'ASC')
+                        ->orderBy('departs.date_depart', 'DESC')
                         ->get();
      
        $jsonData["rows"] = $departs->toArray();

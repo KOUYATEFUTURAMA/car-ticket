@@ -287,7 +287,7 @@
        
         $("#localite_depart, #localite_arrive, #vehicule_id, #chauffeur_id, #localiteDepart, #localiteArrive, #searchByCompagnie").select2({width: '100%', allowClear: true});
         
-       $('#date_depart, #date_arrivee, #searchByDate').datetimepicker({
+        $('#date_depart, #date_arrivee').datetimepicker({
             timepicker: true,
             formatDate: 'd-m-Y',
             formatTime: 'H:i',

@@ -30,7 +30,7 @@
     <div class="container">
         <div class="login-box">
             <div class="login-logo">
-                <a><b>Car</b>-Ticket</a>
+                <a href="/"><b>Car</b>-Ticket</a>
             </div>
             <div class="login-box-body">
             @if(session('success'))
